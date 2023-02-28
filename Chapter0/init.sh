@@ -261,10 +261,15 @@ if [[ $1 = "-c" ]] || [[ $1 = "--compile" ]] || [[ $1 = "-fc" ]] || [[ $1 = '--f
     if ! sudo apt update; then 
         red "install basic utils failed, exiting"
     else
-	if ! sudo apt install -y pigz build-essential bison flex libgmp3-dev libmpc-dev libmpfr-dev texinfo libx11-dev xserver-xorg-dev xorg-dev 2>&1 | tee "$log"/basic-utils.log; then
+        if ! sudo apt install -y pigz build-essential bison flex libgmp3-dev libmpc-dev libmpfr-dev texinfo libx11-dev xserver-xorg-dev xorg-dev 2>&1 | tee "$log"/basic-utils.log; then
             red "install basic utils failed, exiting"
             exit 255
-	fi
+        fi
+    fi
+
+    # nasm
+    if ! sudo apt install -y nasm; then
+        red "install basic utils failed, exiting"
     fi
 
     # bochs
