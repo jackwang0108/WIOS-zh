@@ -1,0 +1,28 @@
+###############################################
+# Configuration file for Bochs
+###############################################
+
+# 1. 设置Bochs将模拟的计算机的内存，实验一模拟的计算机有32MB内存
+megs: 32MB
+
+# 2. 设置Bochs将模拟的机器的BIOS和VGA BIOS
+romimage: file=$BXSHARE/BIOS-bochs-latest
+vgaromimage: file=$BXSHARE/VGABIOS-lgpl-latest
+
+
+# 3. 设置Bochs将模拟的计算机的所使用的磁盘
+# 这里是设置将模拟的计算机中使用一个硬盘
+# ata0: enabled=1, ioaddr1=0x1f0, ioaddr2=0x3f0, irq=14
+# cylinder表示磁盘有几个柱面，heads表示磁盘有几个磁头，spt表示磁盘有几个
+# ata0-master: type=disk, path="project1.img", mode=flat, cylinders=20, heads=16, spt=63
+
+# 4. 选择启动盘符，即BIOS读取这个硬盘的第一个分区为MBR分区
+boot: disk
+
+# 5. 设置日志文件的输出。
+log: log.bochsrc.disk
+
+# 6. 开启或关闭某些功能。
+# 下面是关闭鼠标，并打开键盘。
+mouse: enabled=0
+keyboard: keymap=$BXSHARE/keymaps/x11-pc-us.map
