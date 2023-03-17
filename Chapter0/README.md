@@ -158,13 +158,12 @@ sudo apt-get install build-essential xorg-dev libgtk2.0-dev bison
 sudo tar xvzf bochs-2.7.0tar.gz
 cd bochs-2.7.0
 # 以下配置编译的bochs不支持gdb调试，只能使用bochs自带的调试器。
-./configure-prefix = installation directory-enable-debugger-enable-iodebug-enable-x86-64-with-x-with-X11.
+./configure --prefix = <absolute-path-to-installation-directory> --enable-debugger --enable-iodebug --enable-x86-64 --with-x --with-X11.
 # 以下配置编译的bochs支持gdb调试。可以在vscode中使用gdb或gdb来链接bochs调试。
-./configure--prefix = <absolute-path-to-installation>--enable-GDB-stub--enable-iodebug--enable-x86-64--with-x--with-X11.
+./configure --prefix=<absolute-path-to-installation-directory> --enable-GDB-stub --enable-iodebug --enable-x86-64 --with-x --with-X11.
 make
 make install
 ```
-
 
 > 如果不指定 `--PREFIX`参数，默认情况下，它将被安装到 `/usr/bin `文件夹中，此时需要使用 ` sudo make install`来进行安装
 
